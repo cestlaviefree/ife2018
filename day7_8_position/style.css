@@ -1,0 +1,95 @@
+body{
+    margin: 0;
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+.top_area{
+    height: 80px;
+    background: rgb(50, 51, 51);
+    vertical-align:  middle;
+}
+.center{
+    width: 960px;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+.logo{
+    color: #fff;
+    font-size: 25px;
+    line-height: 75px;
+}
+.login li{
+    color: #fff;
+    /* float: right; */
+    list-style:  none;
+    display: inline-block;
+    line-height: 45px;
+    margin:  0 5px;
+}
+.login a{
+    color: #fff;
+}
+.banner{
+    height: 300px;
+    background-color:rgb(102, 187, 51);
+    position: relative;
+}
+.banner_list{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    float:  right;
+}
+.banner_list li{
+    display: inline-block;
+    list-style: none;
+    width: 30px;
+    height: 35px;
+    color: #000;
+    background-color:#fff;
+    border: 1px solid #000;
+    text-align: center;
+    line-height: 34px;
+    opacity: 0.5;
+    vertical-align: bottom;
+    margin: 0px 4px;
+}
+.banner_list .active{
+    height: 45px;
+    opacity: 0.9;
+    line-height: 48px;
+}
+.nav{
+    height: 70px;
+    border-bottom: 3px solid rgb(230, 230, 230);
+}
+.nav_tab{
+    float: left;
+    border: 3px solid rgb(230, 230, 230);
+    border-bottom: none;
+    height: 29px;
+    border-radius: 15px 15px 0 0;
+    background-color: rgb(237,238,237);
+    padding: 10px 22px;
+    margin: -1px;
+    position:  relative;
+    top: 20px;
+    line-height: 32px;
+}
+.nav .active{
+    border-bottom: 3px solid white;
+    background-color: #fff;
+}
+.content{
+    height: 1000px;
+    display: flex;
+}
+.con_tab{
+    border: 1px solid #ddd;
+    margin: 10px;
+}
