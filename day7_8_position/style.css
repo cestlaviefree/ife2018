@@ -86,10 +86,23 @@ body{
     background-color: #fff;
 }
 .content{
-    height: 1000px;
+    /* height: 1000px; */
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 .con_tab{
     border: 1px solid #ddd;
-    margin: 10px;
+    height: 175px;
+    margin: 10px 10px 0 0;
+    padding: 80px;box-sizing: border-box;
+    flex: 1 2 auto;
+}
+.footer{
+    height: 150px;
+    background: rgb(101, 101, 101);
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    margin-top: 10px;
 }
