@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+    <style>
+        select {
+            visibility: hidden;
+            display: block;
+            float: left;
+        }
+        .palette {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .palette li {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #000;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>            
+    <label>
+        <input id="school" name="status" type="radio">
+        School
+    </label>
+    <label>
+        <input id="company" name="status" type="radio">
+        Company
+    </label>
+    <br />
+
+    <select id="school-select">        
+        <option>北京邮电大学</option>
+        <option>黑龙江大学</option>
+        <option>华中科技大学</option>
+    </select>
+
+    <select id="company-select">        
+        <option>百度</option>
+        <option>爱奇艺</option>        
+    </select>
+    <script>
+    school =document.getElementById("school") ;
+    company =document.getElementById("company");
+    sch_select =document.getElementById("school-select");
+    com_select =document.getElementById("company-select");
+    school.onfocus = function(){
+        sch_select.style.visibility= "visible";
+        com_select.style.visibility= "hidden";
+    }
+    company.onfocus = function(){
+        sch_select.style.visibility= "hidden";
+        com_select.style.visibility= "visible";
+    }
+    </script>
+    <ul class="palette">
+        <li style="background-color:crimson"></li>
+        <li style="background-color:bisque"></li>
+        <li style="background-color:blueviolet"></li>
+        <li style="background-color:coral"></li>
+        <li style="background-color:chartreuse"></li>
+        <li style="background-color:darkolivegreen"></li>
+        <li style="background-color:cyan"></li>
+        <li style="background-color:#194738"></li>        
+    </ul>
+
+    <p class="color-picker"></p>
+    
+    <script>
+    //    list = document.getElementsByTagName("li");
+    //    par = document.getElementsByClassName("color-picker")[0];
+    //    ulist = document.getElementsByTagName("ul")[0];
+    //    for(i=0;i<list.length;i++){
+    //        list[i].onclick = function(){
+    //            bgcolor = this.style.backgroundColor;
+    //            par.innerHTML = bgcolor;
+    //            par.style.color=bgcolor;
+    //            console.log(bgcolor);
+    //        }
+    //    }
+        // 委托事件，减少DOM操作读取次数，提升页面加载性能
+        ulist = document.getElementsByTagName("ul")[0];
+        par = document.getElementsByClassName("color-picker")[0];
+        ulist.onclick = function(ev){
+            bgcolor = ev.target.style.backgroundColor;
+            par.innerHTML = bgcolor;
+            par.style.color = bgcolor;
+            console.log(ev.target);
+        }
+       
+
+        
+        
+    </script>
+</body>
+</html>
