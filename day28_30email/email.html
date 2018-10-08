@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <style>
+        .email-sug li{
+            list-style: none;
+        }
+        .email-sug li:hover{
+            background-color: aqua;
+        }
+        .email-sug{
+            padding: 0;
+            margin: 0;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <input id="email-input" type="text" >
+        <ul id="email-sug-wrapper" class="email-sug">
+            
+        </ul>
+    </div>
+    <script>
+        mail=document.getElementById("email-input");
+        sug=document.getElementById("email-sug-wrapper");
+        var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+        mail.oninput = function() {
+            // 获取用户输入，生成提示框中的提示内容，将提示内容添加到email-sug-wrapper中
+            trim=mail.value;
+            aindex=trim.indexOf("@");//@符号位置
+            hint =new String();//保存提示内容
+            if(aindex!=(-1)){//如果有@，根据后缀筛选提示
+                post=trim.slice(aindex+1);//保存@符号后的内容
+                trim=trim.slice(0,aindex);//保存@符号前的内容
+                for(i=0;i<5;i++){
+                if(postfixList[i].indexOf(post)==0){
+                    hint+="<li>"+trim+"@"+postfixList[i]+"</li>";
+                }
+            }
+            }else{//没有@，不进行筛选
+                for(i=0;i<5;i++){
+                    hint+="<li>"+trim+"@"+postfixList[i]+"</li>";
+                }
+            }
+            sug.innerHTML=hint;
+            // 控制email-sug-wrapper的显示/隐藏状态
+            controldisplay(mail);
+        }
+        function controldisplay(b) {
+            if  (checktohidden()){
+                // 隐藏提示框
+                sug.style.display="none";
+            } else {
+                // 显示提示框
+                sug.style.display="block";
+            }
+        }
+        function checktohidden(){
+            if(trim.search(" ")!=(-1)){
+                return true;
+            }if(trim==""){
+                return true;
+            }
+        }
+        sug.onclick=function(){
+            tarList=event.target;
+            mail.value=tarList.innerText;
+            sug.style.display="none";
+        }
+        act=0;//激活选项的指针
+        // 鼠标控制
+        sug.onmouseover=function(e){
+            e.target.style.backgroundColor="pink";
+            console.log(e.target);
+        }
+        sug.onmouseout=function(e){
+            e.target.style.backgroundColor="white";
+        }
+        // 键盘控制
+        
+        mail.onkeyup=function(e){
+            list=sug.getElementsByTagName("li");
+            if(e.keyCode==38){//上
+                act-=1;
+                act%=list.length;
+            }
+            if(e.keyCode==40){//下
+                act+=1;
+                act%=list.length;
+            }
+            if(e.keyCode==13){//回车
+
+            }
+            (function(){
+                if(act<0){
+                    for(i=0;i<list.length;i++){
+                        list[i].style.backgroundColor="white ";
+                    }
+                    list[list.length+act].style.backgroundColor="pink";
+                }
+                else{
+                    for(i=0;i<list.length;i++){
+                        list[i].style.backgroundColor="white ";
+                    }
+                    list[act].style.backgroundColor="pink";
+                }
+            })();
+            
+            // list[act].style.backgroundColor="pink";
+            // console.log(list[act]);
+        }
+    </script>
+</body>
+</html>
