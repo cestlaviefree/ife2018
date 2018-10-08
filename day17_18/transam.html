@@ -6,6 +6,7 @@
 </head>
 <body>        
     <input id="dec-number" type="number" placeholder="输入一个十进制非负整数">
+    <input id="bin-bit" type="number" placeholder="输入转化后二进制数字位数">
     <button id="trans-btn">转化为二进制</button>
     <p id="result">运算结果</p>
     <script>
@@ -19,21 +20,33 @@ function dec2bin(decNumber) {
         return "运算结果   "+"0";
     }
     else{
-        var bin=" ";
+        var bin=" ",i=0;
         while(decNumber>0){
             rem=decNumber%2;
             decNumber=(decNumber-rem)/2;
             bin=rem.toString()+bin;
+            i++;
         }
-        return "运算结果   "+bin;
+        console.log(bit);
+        if(i>bit){
+            console.log("error");
+            return "运算结果   "+bin;
+        }
+        else{
+            while(i<bit){
+                bin="0"+bin;
+                i++;
+            }
+            return "运算结果   "+bin;
+        }
     }
 }
 
 // 实现党点击转化按钮时，将输入的十进制数字转化为二进制，并显示在result的p标签内
 
 document.getElementById("trans-btn").onclick = function(){
+    bit=parseFloat(document.getElementById("bin-bit").value);
     document.getElementById("result").innerHTML = dec2bin(parseFloat(document.getElementById("dec-number").value));
-    
 };
 
 
